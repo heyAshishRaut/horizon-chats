@@ -9,6 +9,7 @@ function App() {
     // News
     const [items, setItems] = useState([]);
     const [index, setIndex] = useState(0);
+    // @ts-ignore
     const [error, setError] = useState("");
 
     const wsRef = useRef<WebSocket | null>(null);
@@ -30,9 +31,6 @@ function App() {
 
     // Total participants in the room
     const [participants, setParticipants] = useState(0)
-
-    // Unique User Id
-    let id: string | null = null
 
     // User message [SEND]
     const [message, setMessage] = useState("")
@@ -347,15 +345,17 @@ function App() {
                                         <div className="text-center text-white text-2xl font-gambarino font-semibold leading-8">
                                             <div>Wherever you're from, you're welcome here.</div>
                                             <div>Say hi to someone new.</div>
+                                          
                                         </div>
 
                                         <div className="flex flex-col items-center gap-y-4 font-excon pt-6 md:pt-12">
                                             <input onChange={(e) => setFullname(e.target.value)} type="text" placeholder="Full name" className={`py-3 px-4 rounded-xl outline-none w-[80%] md:w-[60%]`} />
                                             <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" className="py-3 px-4 rounded-xl outline-none border-none w-[80%] md:w-[60%]" />
                                             <button onClick={() => goToChat()} className="text-white px-10 py-3 rounded-xl bg-blue-800/80 hover:bg-blue-800/60">Join</button>
-                                            <div className="mt-8 text-white bg-blue-600/20 py-4 px-5 rounded-2xl text-sm text-gray-200/60 border border-blue-500/30">
-                                                Keep the chat positive and respectful. <br />
-                                                Maximum 25 participants can join at a time.
+                                            <div className="mt-8 text-white bg-blue-600/20 py-4 px-5 rounded-2xl text-sm text-gray-100/60">
+                                                Keep the chat positive and respectful. No hate speech, threats, or offensive content. <br />
+                                                Maximum 25 participants can join at a time. <br />
+                                                After 2 hours, the chat space will automatically close.
                                             </div>
                                         </div>
                                     </div>
@@ -372,7 +372,7 @@ function App() {
                     initial={{ opacity: 0, y: 0 }}
                     animate={{ opacity: 1, y: 5 }}
                     transition={{ duration: 0.5, ease: "easeIn" }}
-                    className='absolute z-[100] top-3 px-8 py-3 left-[27%] md:left-[40%] lg:left-[43%] flex items-center text-white bg-red-500/30 border border-red-500/50 rounded-2xl'>
+                    className='absolute z-[100] top-3 px-8 py-3 left-[27%] md:left-[40%] lg:left-[43%] flex items-center text-gray-100/80 bg-red-500/30 rounded-xl'>
                     {alertMsg}
                 </motion.div>
             }
