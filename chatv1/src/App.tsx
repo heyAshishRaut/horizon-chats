@@ -97,7 +97,7 @@ function App() {
     }
     // Ex- 8b11b3c0-7f99-41b8-90e4-7d6be18a4a7f
 
-    const API_KEY = "4aed29868b5b4331ba82d167a539cd89"
+    const API_KEY = "ca29e1eb4d504690eef1cd2a4eef4b0e"
     const [userID, setUserID] = useState("")
 
     useEffect(() => {
@@ -242,16 +242,20 @@ function App() {
     async function getNews() {
         try {
             const res = await fetch(
-                `https://newsapi.org/v2/everything?q=apple&from=2025-07-11&to=2025-07-11&sortBy=popularity&apiKey=${API_KEY}`
+                `https://gnews.io/api/v4/search?q=example&apikey=${API_KEY}`
             );
             const data = await res.json();
 
-            // @ts-ignore
-            const formattedItems = data.articles.map((article, i) => ({
-                image: article.urlToImage,
+            if (!data.articles || !Array.isArray(data.articles)) {
+                setError("No articles found");
+                return;
+            }
+
+            const formattedItems = data.articles.map((article: any) => ({
+                image: article.image,               
                 title: article.title,
                 description: article.description,
-                source: article.source,
+                source: article.source.name,          
                 url: article.url
             }));
 
