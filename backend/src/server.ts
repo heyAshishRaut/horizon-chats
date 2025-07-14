@@ -1,6 +1,6 @@
 import WebSocket, { WebSocketServer } from "ws";
 
-const wss = new WebSocketServer({ port: 8080 });
+const wss = new WebSocketServer({ port: Number(process.env.PORT) });
 
 interface ChatMessage {
     fullname: string;
@@ -49,5 +49,3 @@ function broadcastUserCount() {
         }
     });
 }
-
-console.log("WebSocket server running on ws://localhost:8080");
