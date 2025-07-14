@@ -97,7 +97,7 @@ function App() {
     }
     // Ex- 8b11b3c0-7f99-41b8-90e4-7d6be18a4a7f
 
-    const API_KEY = process.env.REACT_APP_NEWS_API_KEY
+    const API_KEY = import.meta.env.VITE_NEWS_API_KEY
     const [userID, setUserID] = useState("")
 
     useEffect(() => {
@@ -126,6 +126,7 @@ function App() {
         bottomRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [allMessages]);
 
+    const WS_URL = import.meta.env.VITE_WS_URL;
     useEffect(() => {
         if (verify) return;
 
@@ -168,7 +169,7 @@ function App() {
         setUserID(userId)
 
         // added Render URL
-        const ws = new WebSocket(process.env.REACT_APP_WS_URL as string);
+        const ws = new WebSocket(WS_URL);
         wsRef.current = ws;
 
         ws.onopen = () => {
