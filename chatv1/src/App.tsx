@@ -166,7 +166,7 @@ function App() {
         // @ts-ignore
         setUserID(userId)
 
-        const ws = new WebSocket("ws://localhost:8080");
+        const ws = new WebSocket("wss://horizon-smtw.onrender.com");
         wsRef.current = ws;
 
         ws.onopen = () => {
