@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 function App() {
     const bottomRef = useRef<HTMLDivElement | null>(null);
+    // 01 testing
 
     // News
     const [items, setItems] = useState([]);
