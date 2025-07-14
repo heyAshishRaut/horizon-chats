@@ -96,7 +96,7 @@ function App() {
     }
     // Ex- 8b11b3c0-7f99-41b8-90e4-7d6be18a4a7f
 
-    const API_KEY = process.env.API_KEY
+    const API_KEY = "4aed29868b5b4331ba82d167a539cd89"
     const [userID, setUserID] = useState("")
 
     useEffect(() => {
