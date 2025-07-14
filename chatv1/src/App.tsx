@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 function App() {
     const bottomRef = useRef<HTMLDivElement | null>(null);
     // 01 testing
+    // 02 testing
 
     // News
     const [items, setItems] = useState([]);
@@ -97,7 +98,7 @@ function App() {
     }
     // Ex- 8b11b3c0-7f99-41b8-90e4-7d6be18a4a7f
 
-    const API_KEY = "ca29e1eb4d504690eef1cd2a4eef4b0e"
+    const API_KEY = process.env.REACT_APP_NEWS_API_KEY
     const [userID, setUserID] = useState("")
 
     useEffect(() => {
@@ -125,6 +126,8 @@ function App() {
     useEffect(() => {
         bottomRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [allMessages]);
+
+    const WS_URL = process.env.REACT_APP_WS_URL as string
 
     useEffect(() => {
         if (verify) return;
@@ -168,7 +171,7 @@ function App() {
         setUserID(userId)
 
         // added Render URL
-        const ws = new WebSocket("wss://horizon-smtw.onrender.com");
+        const ws = new WebSocket(WS_URL);
         wsRef.current = ws;
 
         ws.onopen = () => {
