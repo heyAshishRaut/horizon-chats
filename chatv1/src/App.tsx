@@ -5,8 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 function App() {
     const bottomRef = useRef<HTMLDivElement | null>(null);
-    // 01 testing
-    // 02 testing
+    // 03 testing
 
     // News
     const [items, setItems] = useState([]);
@@ -127,8 +126,6 @@ function App() {
         bottomRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [allMessages]);
 
-    const WS_URL = process.env.REACT_APP_WS_URL as string
-
     useEffect(() => {
         if (verify) return;
 
@@ -171,7 +168,7 @@ function App() {
         setUserID(userId)
 
         // added Render URL
-        const ws = new WebSocket(WS_URL);
+        const ws = new WebSocket(process.env.REACT_APP_WS_URL as string);
         wsRef.current = ws;
 
         ws.onopen = () => {
