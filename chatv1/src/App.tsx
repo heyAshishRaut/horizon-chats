@@ -166,6 +166,7 @@ function App() {
         // @ts-ignore
         setUserID(userId)
 
+        // added Render URL
         const ws = new WebSocket("wss://horizon-smtw.onrender.com");
         wsRef.current = ws;
 
